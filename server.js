@@ -8,7 +8,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-   origin: "http://localhost:3000",
+   origin: "https://68bcaef7cd486acc359d99a4--funny-bavarois-c2716c.netlify.app",
     credentials: true     
 }))
 const PORT = process.env.PORT || 5000;
