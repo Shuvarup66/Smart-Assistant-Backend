@@ -28,6 +28,9 @@ const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+app.get("/", (req, res) => {
+  res.send("✅ Smart Assistant Backend is running");
+});
 // ✅ Route for Smart Assistant
 app.post("/ask-ai", async (req, res) => {
   const { question } = req.body;
