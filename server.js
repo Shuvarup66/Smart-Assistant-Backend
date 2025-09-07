@@ -3,14 +3,11 @@ import express from "express";
 import dotenv from "dotenv";
 import OpenAI from "openai";
 import cors from "cors";
-
+console.log("🚀 Server started with CORS enabled for ALL origins");
 dotenv.config();
 
 const app = express();
-const allowedOrigins = [
-  "https://funny-bavarois-c2716c.netlify.app", // Netlify
-  "http://localhost:3000", // local dev (optional)
-];
+
 
 app.use(cors())
 
