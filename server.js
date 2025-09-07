@@ -36,6 +36,9 @@ app.post("/ask-ai", async (req, res) => {
     });
 
     const aiResponse = response.choices[0].message.content;
+     res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     res.json({ answer: aiResponse });
   } catch (error) {
     console.error("OpenAI API Error:", error.message);
