@@ -9,17 +9,14 @@ dotenv.config();
 const app = express();
 
 
-app.use(
-  cors({
-    origin: "https://funny-bavarois-c2716c.netlify.app", // replace with your Netlify URL
-    methods: ["GET", "POST", "OPTIONS"],
-    credentials: true,
-  })
-);
+   const corsOptions = {
+      origin: 'https://funny-bavarois-c2716c.netlify.app', // Replace with your actual Netlify URL
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+      credentials: true, // Allow sending cookies/authorization headers
+      optionsSuccessStatus: 204 // For preflight requests
+    };
 
-// Handle preflight requests explicitly
-app.options("*", cors());
-
+    app.use(cors(corsOptions));
 
 
 const PORT = process.env.PORT || 5000;
