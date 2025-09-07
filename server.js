@@ -8,16 +8,21 @@ dotenv.config();
 
 const app = express();
 
+app.use(
+  cors({
+    origin: "https://funny-bavarois-c2716c.netlify.app",
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 
-   const corsOptions = {
-      origin: 'https://funny-bavarois-c2716c.netlify.app', // Replace with your actual Netlify URL
-      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-      credentials: true, // Allow sending cookies/authorization headers
-      optionsSuccessStatus: 204 // For preflight requests
-    };
-
-    app.use(cors(corsOptions));
-
+// ✅ Preflight handler (OPTIONS requests)
+app.options("*", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "https://funny-bavarois-c2716c.netlify.app");
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.sendStatus(200);
+});
 
 const PORT = process.env.PORT || 5000;
 
