@@ -9,11 +9,17 @@ dotenv.config();
 const app = express();
 
 
-// app.use(cors({
-//     origin: 'https://funny-bavarois-c2716c.netlify.app'
-// }));
+app.use(
+  cors({
+    origin: "https://funny-bavarois-c2716c.netlify.app", // replace with your Netlify URL
+    methods: ["GET", "POST", "OPTIONS"],
+    credentials: true,
+  })
+);
 
-app.use(cors());
+// Handle preflight requests explicitly
+app.options("*", cors());
+
 
 
 const PORT = process.env.PORT || 5000;
