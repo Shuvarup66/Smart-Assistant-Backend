@@ -17,12 +17,7 @@ app.use(
 );
 
 // ✅ Preflight handler (OPTIONS requests)
-app.options("*", (req, res) => {
-  res.header("Access-Control-Allow-Origin", "https://funny-bavarois-c2716c.netlify.app");
-  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  res.sendStatus(200);
-});
+
 
 const PORT = process.env.PORT || 5000;
 
