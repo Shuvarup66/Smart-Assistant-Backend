@@ -9,8 +9,11 @@ dotenv.config();
 const app = express();
 
 
-app.use(cors({ origin: "*" }));
+// app.use(cors({
+//     origin: 'https://funny-bavarois-c2716c.netlify.app'
+// }));
 
+app.use(cors());
 
 
 const PORT = process.env.PORT || 5000;
@@ -36,9 +39,7 @@ app.post("/ask-ai", async (req, res) => {
     });
 
     const aiResponse = response.choices[0].message.content;
-     res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+   
     res.json({ answer: aiResponse });
   } catch (error) {
     console.error("OpenAI API Error:", error.message);
