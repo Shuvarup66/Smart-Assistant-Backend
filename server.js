@@ -11,6 +11,7 @@ app.use(cors({
    origin: "https://funny-bavarois-c2716c.netlify.app",
     credentials: true     
 }))
+app.options("*", cors());
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
