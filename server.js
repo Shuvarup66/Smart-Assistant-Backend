@@ -12,21 +12,8 @@ const allowedOrigins = [
   "http://localhost:3000", // local dev (optional)
 ];
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: ["GET", "POST", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-}));
+app.use(cors())
 
-// ✅ Handle preflight for all routes
-app.options("*", cors());
 
 const PORT = process.env.PORT || 5000;
 
